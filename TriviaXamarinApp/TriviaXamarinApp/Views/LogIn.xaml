@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TriviaXamarinApp.Views.LogIn">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="LightSlateGray" x:Name="LogInStack"> 
+            <Label Text="Welcome to Our App"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+                TextColor="White"
+                FontSize="32"/>
+
+            <Label Text="Please enter your Email and Password to log in" HorizontalTextAlignment="Center" TextColor="White" FontSize="26"></Label>
+            <Entry IsPassword="False" Text="{Binding Email}"  BackgroundColor="NavajoWhite"  Placeholder="Email" />
+            <Entry IsPassword="True" Text="{Binding Password}" BackgroundColor="NavajoWhite" Placeholder="Password" />
+            <Button Text="Log In" Command="{Binding SignInCommand}" BackgroundColor="CadetBlue"></Button>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
