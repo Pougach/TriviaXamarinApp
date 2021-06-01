@@ -10,5 +10,6 @@ namespace TriviaXamarinApp.Models
         public string CorrectAnswer { get; set; }
         public string[] OtherAnswers { get; set; }
         public string CreatorNickName { get; set; }
+        public AmericanQuestion() { }
     }
 }

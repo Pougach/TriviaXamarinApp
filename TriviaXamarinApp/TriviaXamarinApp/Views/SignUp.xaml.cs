@@ -4,21 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TriviaXamarinApp.Models;
-using TriviaXamarinApp.ViewModels;
 using TriviaXamarinApp.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using TriviaXamarinApp.ViewModels;
 
 namespace TriviaXamarinApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LogIn : ContentPage
+    public partial class SignUp : ContentPage
     {
         DataPageTransfer DTP;
-        public LogIn()
+        public SignUp()
         {
             this.DTP = (DataPageTransfer)App.Current.BindingContext;
-            this.BindingContext = new LogInVM(this.DTP);
+            this.BindingContext = new SignUpVM(this.DTP);
             InitializeComponent();
         }
     }
