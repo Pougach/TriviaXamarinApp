@@ -12,9 +12,9 @@ namespace TriviaXamarinApp
     {
         public App()
         {
-            InitializeComponent();
-            
-            
+            DataPageTransfer DTP = new DataPageTransfer();
+            this.BindingContext = DTP;
+            InitializeComponent();   
             MainPage = new MainPage();
         }
 
