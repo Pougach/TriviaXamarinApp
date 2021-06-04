@@ -53,12 +53,20 @@ namespace TriviaXamarinApp.Views
         private void LogInButton(object sender, EventArgs e)
         {
             Page logInPage = new LogIn();
-            this.Navigation.PushAsync(logInPage);
+            this.Navigation.PushModalAsync(logInPage);
+            
+        }
+
+        private void PlayGame(object sender, EventArgs e)
+        {
+            Page GamePage = new LogIn();
+            this.Navigation.PushModalAsync(GamePage);
+
         }
         private void SignUpButton(object sender, EventArgs e)
         {
             Page signUpPage = new SignUp();
-            this.Navigation.PushAsync(signUpPage);
+            this.Navigation.PushModalAsync(signUpPage);
         }
     }
 }

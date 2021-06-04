@@ -48,7 +48,7 @@ namespace TriviaXamarinApp.ViewModels
                 {
                     this.DTP.currentUser = loggingUser;
                     Game gamePagePush = new Game();
-                    App.Current.MainPage.Navigation.PushAsync(gamePagePush);
+                    await App.Current.MainPage.Navigation.PushAsync(gamePagePush);
                 }
             }
             catch (Exception e)
