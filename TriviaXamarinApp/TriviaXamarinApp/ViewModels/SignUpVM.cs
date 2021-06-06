@@ -57,9 +57,9 @@ namespace TriviaXamarinApp.ViewModels
                 if (success)
                 {
                     Nickname = "Sign Up Successfull";
-                    this.DTP.currentUser = newUser;
-                    Game gamePagePush = new Game();
-                    await App.Current.MainPage.Navigation.PushAsync(gamePagePush);
+                    this.DTP.CurrentUser = newUser;
+                    SelectionPage selectPagePush = new SelectionPage();
+                    await App.Current.MainPage.Navigation.PushAsync(selectPagePush);
                 }
             }
             catch (Exception e)

@@ -3,15 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TriviaXamarinApp.Views.SignUp">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Sign Up:"
+        <Grid>
+            <StackLayout BackgroundColor="LightSlateGray" x:Name="LogInStack">
+                <Label Text="Sign Up:"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Entry Text="{Binding Nickname}" Placeholder="NickName" PlaceholderColor="DarkSeaGreen"  BackgroundColor="NavajoWhite"/>
-            <Entry Text="{Binding Email}" Placeholder="Email" PlaceholderColor="DarkSeaGreen"   BackgroundColor="NavajoWhite"/>
-            <Entry Text="{Binding Password}" BackgroundColor="NavajoWhite" Placeholder="Password" PlaceholderColor="DarkSeaGreen" IsPassword="True" />
+                HorizontalOptions="CenterAndExpand"
+                TextColor="White"
+                FontSize="32"/>
 
-            <Button Text="Sign Up!" BackgroundColor="CadetBlue" Command="{Binding SignUpCommand}"></Button>
-        </StackLayout>
+                <Button Text="Already have an Acount?" Clicked="GoToLogInPage" BackgroundColor="Aquamarine"></Button>
+                
+                <Entry Text="{Binding Nickname}" Placeholder="NickName" PlaceholderColor="DarkSeaGreen"  BackgroundColor="NavajoWhite"/>
+                <Entry Text="{Binding Email}" Placeholder="Email" PlaceholderColor="DarkSeaGreen"   BackgroundColor="NavajoWhite"/>
+                <Entry Text="{Binding Password}" BackgroundColor="NavajoWhite" Placeholder="Password" PlaceholderColor="DarkSeaGreen" IsPassword="True" />
+
+                <Button Text="Sign Up!" BackgroundColor="CadetBlue" Command="{Binding SignUpCommand}"></Button>
+                
+                <Button Text="Back to main page" Clicked="BackToMainPage" BackgroundColor="CadetBlue"></Button>
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

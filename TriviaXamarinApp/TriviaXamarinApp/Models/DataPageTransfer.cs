@@ -7,15 +7,15 @@ namespace TriviaXamarinApp.Models
 {
     class DataPageTransfer
     {
-        public User currentUser { get; set; }
+        public User CurrentUser { get; set; }
         public TriviaWebAPIProxy API { get; private set; }
-        public AmericanQuestion chosenQuestion { get; set; }
-        public bool questionAdded { get; set; }
+        public AmericanQuestion ChosenQuestion { get; set; }
+        public bool QuestionAdded { get; set; }
 
         public DataPageTransfer()
         {
             this.API = TriviaWebAPIProxy.CreateProxy();
-            this.questionAdded = false;
+            this.QuestionAdded = false;
         }
     }
 }

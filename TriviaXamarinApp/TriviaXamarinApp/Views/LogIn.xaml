@@ -4,16 +4,20 @@
              x:Class="TriviaXamarinApp.Views.LogIn">
     <ContentPage.Content>
         <StackLayout BackgroundColor="LightSlateGray" x:Name="LogInStack"> 
-            <Label Text="Welcome to Our App"
+            <Label Text="Please Log In"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand"
                 TextColor="White"
                 FontSize="32"/>
 
+            <Button Text="Need to sign up?" Clicked="GoToSignUpPage" BackgroundColor="Aquamarine"></Button>
+            
             <Label Text="Please enter your Email and Password to log in" HorizontalTextAlignment="Center" TextColor="White" FontSize="26"></Label>
             <Entry IsPassword="False" Text="{Binding Email}"  BackgroundColor="NavajoWhite"  Placeholder="Email" />
             <Entry IsPassword="True" Text="{Binding Password}" BackgroundColor="NavajoWhite" Placeholder="Password" />
-            <Button Text="Log In" Command="{Binding SignInCommand}" BackgroundColor="CadetBlue"></Button>
+            <Button Text="Log In" Command="{Binding LogInCommand}" BackgroundColor="CadetBlue"></Button>
+            
+            <Button Text="Back to main page" Clicked="BackToMainPage" BackgroundColor="CadetBlue"></Button>
 
         </StackLayout>
     </ContentPage.Content>

@@ -46,7 +46,7 @@ namespace TriviaXamarinApp.ViewModels
                 loggingUser = await this.DTP.API.LoginAsync(this.Email, this.Password);
                 if (loggingUser != null)
                 {
-                    this.DTP.currentUser = loggingUser;
+                    this.DTP.CurrentUser = loggingUser;
                     Game gamePagePush = new Game();
                     await App.Current.MainPage.Navigation.PushAsync(gamePagePush);
                 }

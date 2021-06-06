@@ -3,10 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TriviaXamarinApp.Views.Game">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout x:Name="questionStack">
+
+            <Label Text="{Binding Source={x:Reference QuestionPageName}, Path=BindingContext.DTP.CurrentUser.NickName}" FontSize="18" TextDecorations="Underline"/>
+            <Label Text="{Binding Score}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Start" TextColor="GreenYellow"/>
+
+            <Label Text ="{Binding QuestionText}" VerticalOptions="Fill" HorizontalOptions="Center" FontSize="18" TextDecorations="Underline" TextColor="{Binding QuestionColor}"/>
+            <Label Text ="{Binding QuestionWriter}" VerticalOptions="Fill" HorizontalOptions="Start" FontFamily="David" FontSize="16" FontAttributes="Bold" TextDecorations="Underline"/>
+
+            <CollectionView ItemsSource="{Binding AnswersCollection}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate >
+                        <Button Text="{Binding}" Command="{Binding Source={x:Reference QuestionPageName}, Path=BindingContext.UserAnswerCommand}" CommandParameter="{Binding}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="200" HeightRequest="100" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+            <Button Text="New Question" BackgroundColor="LawnGreen" Command="{Binding NextQuestionCommand}" WidthRequest="100"/>
+            <Button Text="Add Question" BackgroundColor="{Binding AddQuestionColor}" Command="{Binding AddQuestionCommand}" WidthRequest="100"/>
+
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

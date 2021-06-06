@@ -21,5 +21,15 @@ namespace TriviaXamarinApp.Views
             this.BindingContext = new LogInVM(this.DTP);
             InitializeComponent();
         }
+        private void BackToMainPage(object sender, EventArgs e)
+        {
+            Page mainPage = new MainPage();
+            this.Navigation.PushModalAsync(mainPage);
+        }
+        private void GoToSignUpPage(object sender, EventArgs e)
+        {
+            Page signUpPage = new SignUp();
+            this.Navigation.PushModalAsync(signUpPage);
+        }
     }
 }
