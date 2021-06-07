@@ -23,8 +23,11 @@ namespace TriviaXamarinApp.ViewModels
             get { return this.questionText; }
             set
             {
-                this.questionText = value;
-                this.OnPropertyChanged("QuestionText");
+                if (value != this.questionText)
+                {
+                    this.questionText = value;
+                    this.OnPropertyChanged("QuestionText");
+                }
             }
         }
 
@@ -34,8 +37,11 @@ namespace TriviaXamarinApp.ViewModels
             get { return this.questionAuthor; }
             set
             {
-                this.questionAuthor = value;
-                this.OnPropertyChanged("QuestionAuthor");
+                if (value != this.questionAuthor)
+                {
+                    this.questionAuthor = value;
+                    this.OnPropertyChanged("QuestionAuthor");
+                }
             }
         }
         private int points { get; set; }
@@ -44,8 +50,11 @@ namespace TriviaXamarinApp.ViewModels
             get { return this.points; }
             set
             {
-                this.points = value;
-                this.OnPropertyChanged("Points");
+                if (value != this.points)
+                {
+                    this.points = value;
+                    this.OnPropertyChanged("Points");
+                }
             }
         }
 
@@ -55,8 +64,11 @@ namespace TriviaXamarinApp.ViewModels
             get { return this.addQuesColor; }
             set
             {
-                this.addQuesColor = value;
-                this.OnPropertyChanged("AddQuesColor");
+                if (value != addQuesColor)
+                {
+                    this.addQuesColor = value;
+                    this.OnPropertyChanged("AddQuesColor");
+                }
             }
         }
         private string questionColor { get; set; }

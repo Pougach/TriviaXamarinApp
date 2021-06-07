@@ -56,14 +56,6 @@ namespace TriviaXamarinApp.Views
             await this.Navigation.PushAsync(logInPage);
             
         }
-
-        //private async void PlayGame(object sender, EventArgs e)
-        //{
-        //    Page GamePage = new Game();
-        //    await this.Navigation.PushAsync(GamePage);
-            
-
-        //}
         private async void SignUpButton(object sender, EventArgs e)
         {
             Page signUpPage = new SignUp();
