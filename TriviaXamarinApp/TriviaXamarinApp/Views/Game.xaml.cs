@@ -15,17 +15,12 @@ namespace TriviaXamarinApp.Views
     public partial class Game : ContentPage
     {
         DataPageTransfer DTP;
-        GamePageVM pageVM;
 
         public Game()
         {
-            
-            this.pageVM = new GamePageVM(); 
-            this.DTP = (DataPageTransfer)((App)App.Current).BindingContext;
-            this.BindingContext = this.pageVM;
-
+            this.DTP = (DataPageTransfer)App.Current.BindingContext;
+            this.BindingContext = new GamePageVM(this.DTP);
             InitializeComponent();
-            
         }
     }
 }

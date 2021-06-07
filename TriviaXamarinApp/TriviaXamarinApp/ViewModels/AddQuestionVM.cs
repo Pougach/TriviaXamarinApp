@@ -18,8 +18,11 @@ namespace TriviaXamarinApp.ViewModels
             get { return this.addQuestion; }
             set
             {
-                this.addQuestion = value;
-                this.OnPropertyChanged("AddQuestion");
+                if (value != this.addQuestion)
+                {
+                    this.addQuestion = value;
+                    this.OnPropertyChanged("Add question");
+                }
             }
         }
 
@@ -28,7 +31,7 @@ namespace TriviaXamarinApp.ViewModels
             this.AddQuestion = new AmericanQuestion();
             this.DTP = dtp;
             HasAdded = false;
-            this.AddQuestion.CreatorNickName = this.DTP.CurrentUser.NickName;
+            this.AddQuestion.CreatorNickName = this.DTP.currentUser.NickName;
             this.AddQuestion.OtherAnswers = new string[3];
         }
 
@@ -40,14 +43,13 @@ namespace TriviaXamarinApp.ViewModels
             {
                 try
                 {
-
                     bool isAdded = await this.DTP.API.PostNewQuestion(this.addQuestion);
                     if (isAdded)
                     {
                         HasAdded = true;
-                        this.DTP.CurrentUser.Questions.Add(this.AddQuestion);
-                        this.DTP.QuestionAdded = true;
-                        await App.Current.MainPage.Navigation.PopAsync(); 
+                        this.DTP.currentUser.Questions.Add(this.AddQuestion);
+                        this.DTP.questionAdded = true;
+                        await App.Current.MainPage.Navigation.PopAsync();
                     }
                 }
                 catch (Exception e)

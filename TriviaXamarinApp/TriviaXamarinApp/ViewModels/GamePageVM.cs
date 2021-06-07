@@ -23,51 +23,39 @@ namespace TriviaXamarinApp.ViewModels
             get { return this.questionText; }
             set
             {
-                if (value != this.questionText)
-                {
-                    this.questionText = value;
-                    this.OnPropertyChanged();
-                }
-                
+                this.questionText = value;
+                this.OnPropertyChanged("QuestionText");
             }
         }
 
-        private string questionWriter { get; set; }
-        public string QuestionWriter
+        private string questionAuthor { get; set; }
+        public string QuestionAuthor
         {
-            get { return this.questionWriter; }
+            get { return this.questionAuthor; }
             set
             {
-                if (value != this.questionWriter)
-                {
-                    this.questionWriter = value;
-                    this.OnPropertyChanged();
-                }
-               
+                this.questionAuthor = value;
+                this.OnPropertyChanged("QuestionAuthor");
             }
         }
-        private int score { get; set; }
-        public int Score
+        private int points { get; set; }
+        public int Points
         {
-            get { return this.score; }
+            get { return this.points; }
             set
             {
-                if (value != this.score)
-                {
-                    this.score = value;
-                    this.OnPropertyChanged();
-                }
-                
+                this.points = value;
+                this.OnPropertyChanged("Points");
             }
         }
 
-        private string addQuestionColor { get; set; }
-        public string AddQuestionColor
+        private string addQuesColor { get; set; }
+        public string AddQuesColor
         {
-            get { return this.addQuestionColor; }
+            get { return this.addQuesColor; }
             set
             {
-                this.addQuestionColor = value;
+                this.addQuesColor = value;
                 this.OnPropertyChanged("AddQuesColor");
             }
         }
@@ -82,7 +70,6 @@ namespace TriviaXamarinApp.ViewModels
             }
         }
 
-
         public AmericanQuestion CurrentQuestion { get; set; }
 
 
@@ -91,8 +78,16 @@ namespace TriviaXamarinApp.ViewModels
             this.DTP = (DataPageTransfer)App.Current.BindingContext;
             this.AnswersCollection = new ObservableCollection<string>();
             this.QuestionText = "Press the button for a question";
-            this.AddQuestionColor = "LightGray";
-            this.QuestionColor = "DarkGray";
+            this.AddQuesColor = "LightGray";
+            this.QuestionColor = "Black";
+        }
+        public GamePageVM(DataPageTransfer dtp)
+        {
+            this.DTP = dtp;
+            this.AnswersCollection = new ObservableCollection<string>();
+            this.QuestionText = "Press the button for a question";
+            this.AddQuesColor = "LightGray";
+            this.QuestionColor = "Black";
         }
         public ICommand UserAnswerCommand => new Command<string>(UserAnswer);
 
@@ -100,7 +95,7 @@ namespace TriviaXamarinApp.ViewModels
         {
             if (this.CurrentQuestion.CorrectAnswer == answer)
             {
-                this.Score = this.Score + 1;
+                this.Points++;
                 this.QuestionText = "You are Correct!\n" + "Your Answer was: " + this.CurrentQuestion.CorrectAnswer;
                 this.QuestionColor = "ForestGreen";
             }
@@ -109,11 +104,11 @@ namespace TriviaXamarinApp.ViewModels
                 this.QuestionText = "You are Wrong. \nYour Answer was: " + answer + "\nThe correct answer was: " + this.CurrentQuestion.CorrectAnswer;
                 this.QuestionColor = "Red";
             }
-            if (this.Score >= 3)
+            if (this.Points >= 3)
             {
-                this.AddQuestionColor = "PaleGoldenrod";
+                this.AddQuesColor = "PaleGoldenrod";
             }
-            this.QuestionWriter = "";
+            this.QuestionAuthor = "";
             this.AnswersCollection.Clear();
         }
 
@@ -121,8 +116,8 @@ namespace TriviaXamarinApp.ViewModels
         private async void SetNextQuestion() //Gets and sets a new question in the VM then sets it's answers for the collection.
         {
             this.CurrentQuestion = await this.DTP.API.GetRandomQuestion();
-            this.QuestionWriter = "Question by: " + this.CurrentQuestion.CreatorNickName;
-            this.QuestionColor = "DarkGray";
+            this.QuestionAuthor = "Question by: " + this.CurrentQuestion.CreatorNickName;
+            this.QuestionColor = "Black";
 
             SetAnswersQuestions();
 
@@ -158,11 +153,11 @@ namespace TriviaXamarinApp.ViewModels
         public ICommand AddQuestionCommand => new Command(AddQuestion);
         private void AddQuestion() //Gets and sets a new question in the VM then sets it's answers for the collection.
         {
-            if (this.Score < 3)
+            if (this.Points < 3)
                 return;
-            this.Score -= 3;
-            if (this.Score < 3)
-                this.AddQuestionColor = "LightGray";
+            this.Points -= 3;
+            if (this.Points < 3)
+                this.AddQuesColor = "LightGray";
             AddQuestionPage addQuestionPage = new AddQuestionPage();
             App.Current.MainPage.Navigation.PushAsync(addQuestionPage);
         }

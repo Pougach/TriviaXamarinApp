@@ -24,8 +24,10 @@ namespace TriviaXamarinApp.Services
         private TriviaWebAPIProxy(string baseUri)
         {
             //Set client handler to support cookies!!
-            HttpClientHandler handler = new HttpClientHandler();
-            handler.CookieContainer = new System.Net.CookieContainer();
+            HttpClientHandler handler = new HttpClientHandler
+            {
+                CookieContainer = new System.Net.CookieContainer()
+            };
 
             //Create client with the handler!
             this.client = new HttpClient(handler, true);

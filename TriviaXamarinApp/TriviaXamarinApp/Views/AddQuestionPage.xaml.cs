@@ -19,8 +19,8 @@ namespace TriviaXamarinApp.Views
             this.DTP = (DataPageTransfer)App.Current.BindingContext;
             AddQuestionVM awv = new AddQuestionVM(this.DTP);
 
-            if (this.DTP.ChosenQuestion != null) //If player is editing, then it will recieve a question and input it already.
-                awv.AddQuestion = this.DTP.ChosenQuestion;
+            if (this.DTP.chosenQuestion != null) //If player is editing, then it will recieve a question and input it already.
+                awv.AddQuestion = this.DTP.chosenQuestion;
 
             this.BindingContext = awv;
             InitializeComponent();

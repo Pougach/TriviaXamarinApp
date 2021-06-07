@@ -15,7 +15,7 @@ namespace TriviaXamarinApp.Views
         DataPageTransfer DTP;
         public SelectionPage()
         {
-            this.DTP = this.DTP = (DataPageTransfer)App.Current.BindingContext;
+            this.DTP = (DataPageTransfer)App.Current.BindingContext;
             InitializeComponent();
         }
 

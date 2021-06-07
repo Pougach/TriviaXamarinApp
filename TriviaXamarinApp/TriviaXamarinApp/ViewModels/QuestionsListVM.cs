@@ -29,7 +29,7 @@ namespace TriviaXamarinApp.ViewModels
         {
             this.questionsCollection.Clear();
 
-            foreach (AmericanQuestion q in this.DTP.CurrentUser.Questions)
+            foreach (AmericanQuestion q in this.DTP.currentUser.Questions)
             {
                 this.questionsCollection.Add(q);
             }
@@ -37,16 +37,16 @@ namespace TriviaXamarinApp.ViewModels
         public ICommand EditQuestionCommand => new Command<AmericanQuestion>(EditQuestion);
         private void EditQuestion(AmericanQuestion editQuestion)
         {
-            this.DTP.QuestionAdded = false;
-            this.DTP.ChosenQuestion = editQuestion;
-            DeleteQuestion(this.DTP.ChosenQuestion);
+            this.DTP.questionAdded = false;
+            this.DTP.chosenQuestion = editQuestion;
+            DeleteQuestion(this.DTP.chosenQuestion);
             if (deleted)
             {
                 AddQuestionPage aqp = new AddQuestionPage();
                 App.Current.MainPage.Navigation.PushAsync(aqp);
                 SetQuestionsInCollection();
             }
-            this.DTP.ChosenQuestion = null; 
+            this.DTP.chosenQuestion = null; 
         }
 
         public ICommand DeleteQuestionCommand => new Command<AmericanQuestion>(DeleteQuestion);
@@ -58,7 +58,7 @@ namespace TriviaXamarinApp.ViewModels
                 if (deleted)
                 {
                     SetQuestionsInCollection();
-                    this.DTP.CurrentUser.Questions.Remove(ques);
+                    this.DTP.currentUser.Questions.Remove(ques);
                 }
             }
             catch (Exception e)
