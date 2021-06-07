@@ -47,7 +47,7 @@ namespace TriviaXamarinApp.ViewModels
                         HasAdded = true;
                         this.DTP.CurrentUser.Questions.Add(this.AddQuestion);
                         this.DTP.QuestionAdded = true;
-                        App.Current.MainPage.Navigation.PopAsync(); 
+                        await App.Current.MainPage.Navigation.PopAsync(); 
                     }
                 }
                 catch (Exception e)

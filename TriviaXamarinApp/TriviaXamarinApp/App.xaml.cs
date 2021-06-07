@@ -15,7 +15,7 @@ namespace TriviaXamarinApp
             DataPageTransfer DTP = new DataPageTransfer();
             this.BindingContext = DTP;
             InitializeComponent();   
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()

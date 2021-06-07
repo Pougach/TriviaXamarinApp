@@ -23,8 +23,12 @@ namespace TriviaXamarinApp.ViewModels
             get { return this.questionText; }
             set
             {
-                this.questionText = value;
-                this.OnPropertyChanged("QuestionText");
+                if (value != this.questionText)
+                {
+                    this.questionText = value;
+                    this.OnPropertyChanged();
+                }
+                
             }
         }
 
@@ -34,8 +38,12 @@ namespace TriviaXamarinApp.ViewModels
             get { return this.questionWriter; }
             set
             {
-                this.questionWriter = value;
-                this.OnPropertyChanged("QuestionWriter");
+                if (value != this.questionWriter)
+                {
+                    this.questionWriter = value;
+                    this.OnPropertyChanged();
+                }
+               
             }
         }
         private int score { get; set; }
@@ -44,8 +52,12 @@ namespace TriviaXamarinApp.ViewModels
             get { return this.score; }
             set
             {
-                this.score = value;
-                this.OnPropertyChanged("Score");
+                if (value != this.score)
+                {
+                    this.score = value;
+                    this.OnPropertyChanged();
+                }
+                
             }
         }
 
